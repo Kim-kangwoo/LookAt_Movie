@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="coupon">
+  	
+  	<select id="findCoupon" parameterType="int" resultType="CouponVO">
+  		
+  		SELECT *
+		FROM COUPON
+		WHERE COUPON_ID IN (SELECT COUPON_ID 
+        		            FROM COUPON_CART
+                		    WHERE MEMBERSHIP_ID = #{membershipId})
+		ORDER BY COUPON_ID                		    
+  	
+  	</select>
+  	
+  	<delete id="deleteCoupon" parameterType="Hashmap">
+  	
+  		DELETE FROM COUPON_CART 
+		WHERE MEMBERSHIP_ID = #{membershipId}
+		AND COUPON_ID = #{couponValue}
+  	
+  	</delete>
+  	
+  	<!-- 회원가입시 쿠폰 없음으로 COUPON_CART에 INSERT  -->
+  	<insert id="insertDefaultCoupon" parameterType="com.lookat.dto.MemberDTO">
+  		INSERT INTO COUPON_CART
+		VALUES (COUPON_CART_ID_SEQ.NEXTVAL
+			        , (SELECT MEMBERSHIP_ID
+			            FROM MEMBERSHIP
+			            WHERE MEMBER_ID = (SELECT MEMBER_ID
+							                                FROM MEMBER
+							                                WHERE MEMBER_LOGID = #{memberLogId}
+							                                AND MEMBER_NAME = #{memberName}
+							                                AND MEMBER_NICKNAME = #{memberNickname})) 
+       				 , 1)
+  	</insert>
+  	
+  	
+  	
+  	
+  	
+<!--   	
+  	회원가입시 웰컴쿠폰 발급
+  	<insert id="insertWelcomeCoupon" parameterType="com.lookat.dto.MemberDTO">
+  		INSERT INTO COUPON_CART
+		VALUES (COUPON_CART_ID_SEQ.NEXTVAL
+			        , (SELECT MEMBERSHIP_ID
+			            FROM MEMBERSHIP
+			            WHERE MEMBER_ID = (SELECT MEMBER_ID
+							                                FROM MEMBER
+							                                WHERE MEMBER_LOGID = #{memberLogId}
+							                                AND MEMBER_NAME = #{memberName}
+							                                AND MEMBER_NICKNAME = #{memberNickname})) 
+       				 , 5)
+  	</insert>
+  	
+    -->
+</mapper>
+

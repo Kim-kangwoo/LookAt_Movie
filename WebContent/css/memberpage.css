@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cafe24Simplehae-v2.0', sans-serif;
+}
+
+body {
+    background-color: #000000;
+    color: #ff66b2;
+    font-size: 16px;
+    padding: 20px;
+}
+
+.page-title {
+    text-align: center;
+    color: #ff66b2;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.description {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.member-table {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border: 1px solid #ff66b2;
+    background-color: #222222;
+}
+
+.member-table th, .member-table td {
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border: 1px solid #ff66b2;
+}
+
+.member-links {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.member-link {
+    color: #ff66b2;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.member-link:hover {
+    color: #ff99cc;
+}
+
+.search-title {
+    font-size: 20px;
+    color: #ff66b2;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.search-form input {
+    padding: 8px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.submit-button {
+    background-color: #ff66b2;
+    color: white;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.submit-button:hover {
+    background-color: #ff99cc;
+}
+
+.member-list-table {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border: 1px solid #ff66b2;
+    background-color: #222222;
+}
+
+.member-list-table th, .member-list-table td {
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border: 1px solid #ff66b2;
+}
+
+.member-list-table tr:nth-child(even) {
+    background-color: #333333;
+}

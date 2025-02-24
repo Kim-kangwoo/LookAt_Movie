@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+		
+  <settings>
+  	<setting name="mapUnderscoreToCamelCase" value="true"/>
+  	<setting name="jdbcTypeForNull" value="NULL"/>
+  	<setting name="logImpl" value="STDOUT_LOGGING"/> <!-- 쿼리 확인용! -->
+  
+  </settings>
+
+	<typeAliases>
+		<!-- VO -->
+		<typeAlias type="com.lookat.vo.MovieVO" alias="MovieVO"/>
+		<typeAlias type="com.lookat.vo.TheaterVO" alias="TheaterVO"/>
+		<typeAlias type="com.lookat.vo.RuntimeVO" alias="RuntimeVO"/>
+		<typeAlias type="com.lookat.vo.ReserveVO" alias="ReserveVO"/>
+		<typeAlias type="com.lookat.vo.SeatVO" alias="SeatVO"/>
+		<typeAlias type="com.lookat.vo.CinemaVO" alias="CinemaVO"/>
+		<typeAlias type="com.lookat.vo.MembershipVO" alias="MembershipVO"/>
+		<typeAlias type="com.lookat.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.lookat.vo.SaleVO" alias="SaleVO"/>
+		<typeAlias type="com.lookat.vo.MemberAndMembershipVO" alias="MemberAndMembershipVO"/>
+		<typeAlias type="com.lookat.vo.CouponVO" alias="CouponVO"/>
+		<typeAlias type="com.lookat.vo.AmountpaidVO" alias="AmountpaidVO"/>
+		
+		<!-- DTO -->
+		<typeAlias type="com.lookat.dto.MovieDTO" alias="MovieDTO"/>
+		<typeAlias type="com.lookat.dto.TheaterDTO" alias="TheaterDTO"/>
+	</typeAliases>
+
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">  <!-- Connection Pool -->
+        <property name="driver" value="oracle.jdbc.OracleDriver"/> <!-- 사용할 DB -->
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        <property name="username" value="lookat"/>
+        <property name="password" value="lookatpw"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <mappers>
+    <mapper resource="com/lookat/mybatis/reservemapper.xml"/>
+    <mapper resource="com/lookat/mybatis/membershipmapper.xml"/>
+    <mapper resource="com/lookat/mybatis/cinemamapper.xml"/>
+    <mapper resource="com/lookat/mybatis/membermapper.xml"/>
+    <mapper resource="com/lookat/mybatis/moviemapper.xml"/>
+    <mapper resource="com/lookat/mybatis/runtimemapper.xml"/>
+    <mapper resource="com/lookat/mybatis/salemapper.xml"/>
+    <mapper resource="com/lookat/mybatis/seatmapper.xml"/>
+    <mapper resource="com/lookat/mybatis/theatermapper.xml"/>
+    <mapper resource="com/lookat/mybatis/couponmapper.xml"/>
+    <mapper resource="com/lookat/mybatis/amountpaidmapper.xml"/>
+  </mappers>
+</configuration>

@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #000000 ;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2rem;
+        color: #ff66b2;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    span {
+        display: block;
+        font-size: 1.2rem;
+        font-weight : bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    input[type="radio"], input[type="number"], select, input[type="button"] {
+        margin: 5px 0;
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    input[type="radio"] {
+        width: auto;
+        
+        margin-right: 10px;
+    }
+
+    input[type="button"] {
+        background-color: #b3b3b3;
+        color: white;
+        cursor: pointer;
+        border: none;
+        margin-top: 10px;
+    }
+
+    input[type="button"]:hover {
+        background-color: #ff66b2;
+    }
+
+    .section {
+        margin-bottom: 30px;
+    }
+
+    .payment-result, .discount-section, .total-section {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #e8f5e9;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .payment-result {
+        background-color: #e8f5e9;
+    }
+
+    .payment-options {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .payment-options label {
+        font-size: 1.1rem;
+        color: #000000;
+    }
+
+    .buttons-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px; /* 버튼들 사이의 간격을 추가 */
+    }
+
+     .buttons-container div {
+        text-align: center;
+        padding: 15px;
+        background-color: #d9d9d9; /* 버튼 기본 배경 색상 */
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin: 0px 30px;
+        margin-top: 8px;
+        /* 버튼들이 동일한 크기를 가지도록 설정 */
+    }
+
+    .buttons-container div:hover {
+        background-color: #ffccff;
+    }
+
+    .buttons-container .confirm {
+        background-color: #ff66b2;
+        width: 450px;
+        color: white;
+    }
+
+    .buttons-container .cancel {
+        background-color: #ff66b2;
+        width: 150px;
+        color: white;
+        
+    }
+
+    .discount-section, .total-section {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    
+    [id="totalDiscount"] {
+    font-weight : bold;
+    font-size: 1.1rem;
+    }
+    
+    [id="leftTotalResult"] {
+    font-weight : bold;
+    font-size: 1.1rem;
+    }
+	

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="movie">
+  	
+  	<!-- 영화 리스트 추출 -->
+  	<select id="getMovieListByTheateId" parameterType="int" resultType="MovieVO">
+   		
+   		<![CDATA[
+   		SELECT M.*
+		FROM MOVIE M, (SELECT MOVIE_ID FROM CINEMA WHERE THEATER_ID = #{theaterId}) T
+		WHERE M.MOVIE_ID = T.MOVIE_ID
+	   	]]>
+   		
+   </select>
+   
+   <!--  영화 하나 추출 -->
+    <select id="findOneMovie" parameterType="int" resultType="MovieVO">
+   	
+   	
+   		SELECT *
+   		FROM Movie
+   		WHERE Movie_ID = #{movieId}
+   	
+   </select>
+   
+   <!-- 런타임 ID를 이용한 영화 이름 추출 -->
+   <select id="getMovieNameByRuntimeId" parameterType="int" resultType="string">
+   
+   	    <![CDATA[
+   		SELECT M.MOVIE_NAME
+		FROM MOVIE M, (SELECT MOVIE_ID
+        	    	   FROM RUNTIME 
+            	       WHERE RUNTIME_ID = #{runtimeId}) RT
+		WHERE M.MOVIE_ID = RT.MOVIE_ID
+   		]]>
+   </select>
+   
+   
+   
+   
+   
+   <!-- 영화 상세정보 가져오기 -->
+    <select id="movieDetail" parameterType="string" resultType="MovieVO">
+    	SELECT * FROM MOVIE WHERE MOVIE_ID = #{movieId}
+    </select>
+    
+   	
+   	<!-- 예매율순 정렬한 영화 목록 -->
+    <!-- 일단 영화ID, 영화제목, 영화이미지경로만 가져옴 -->
+    <select id="movieListOrderByReserve" resultType="MovieDTO">
+    	SELECT M.MOVIE_ID, M.MOVIE_NAME, COUNT(RES.RESERVE_NUM) AS RESERVE_COUNT, M.MOVIE_IMG_PATH
+		FROM MOVIE M
+		LEFT JOIN RUNTIME RUN ON M.MOVIE_ID = RUN.MOVIE_ID
+		LEFT JOIN RESERVE RES ON RUN.RUNTIME_ID = RES.RUNTIME_ID
+		GROUP BY M.MOVIE_ID, M.MOVIE_NAME, M.MOVIE_IMG_PATH
+		ORDER BY RESERVE_COUNT DESC
+    </select>
+   	
+   	<!-- 별점순 정렬한 영화 목록 -->
+    <select id="movieListOrderByStar" resultType="MovieVO">
+    	SELECT * FROM MOVIE ORDER BY MOVIE_STAR DESC
+    </select>
+    
+    <!-- 영화 개수 가져오기 -->
+    <select id="movieCnt" resultType="int">
+    	SELECT COUNT(*) FROM MOVIE
+    </select>
+   	
+   	 <!-- 영화 목록 가져오기 -->
+    <select id="movieList" resultType="MovieVO">
+    	SELECT * FROM MOVIE ORDER BY MOVIE_NAME
+    </select>
+    
+    <!-- 관리자 -->
+    <!-- 1. 영화 등록하기 -->
+    <insert id="movieInsert" parameterType="MovieDTO">
+    	INSERT INTO MOVIE
+		VALUES (MOVIE_ID_SEQ.NEXTVAL, #{movieName}, #{movieType}, #{movieDirector}
+					, #{movieStudio}, #{movieActor}, #{movieStory}, #{movieImgPath}, #{movieStar} )
+    </insert>
+   	
+   	<!-- 영화 삭제하기 -->
+    <delete id="movieDelete" parameterType="string">
+    	DELETE FROM MOVIE WHERE MOVIE_ID IN
+    	<foreach item="movieId" index="index" collection="array" open="(" separator="," close=")">
+    		#{movieId}
+    	</foreach>
+    </delete>
+    
+    <!-- 영화 수정 : 일치하는 영화 이름, 영화 감독 이름 조회 -->
+    <select id="movieUpdateSearch" parameterType="map" resultType="MovieVO">
+    	SELECT *
+		FROM MOVIE
+		WHERE MOVIE_NAME = #{searchMovieName}
+		AND MOVIE_DIRECTOR = #{searchDirectorName}
+    </select>
+    
+    <!-- 영화 수정 업데이트 하기 -->
+    <update id="movieUpdate" parameterType="MovieDTO">
+    	UPDATE MOVIE
+		SET MOVIE_NAME = #{movieName}
+    		, MOVIE_TYPE = #{movieType}
+		    , MOVIE_DIRECTOR = #{movieDirector}
+		    , MOVIE_STUDIO = #{movieStudio}
+		    , MOVIE_ACTOR = #{movieActor}
+		    , MOVIE_STORY = #{movieStory}
+		    , MOVIE_IMG_PATH = #{movieImgPath}
+		    , MOVIE_STAR = #{movieStar}
+		WHERE MOVIE_ID = #{movieId}
+    </update>
+    
+    <!-- 영화 이름 가져오기 -->
+    <select id="getMovieName" parameterType="string" resultType="string">
+    	SELECT MOVIE_NAME FROM MOVIE WHERE MOVIE_ID = #{movieId}
+    </select>
+    
+    <!-- 4. 통계 -->
+	<!-- 성별에 따른 특정 영화 선호도  : 여성 -->
+	<select id="getMoviePreferByFemale" parameterType="string" resultType="double">
+		SELECT 
+    ROUND(
+        SUM(S.SEAT_PRICE) * 100.0 / 
+        (SELECT SUM(S2.SEAT_PRICE)
+         FROM RESERVE RES2
+         JOIN RUNTIME RUN2 ON RES2.RUNTIME_ID = RUN2.RUNTIME_ID
+         JOIN MOVIE MOV2 ON RUN2.MOVIE_ID = MOV2.MOVIE_ID
+         JOIN SEAT S2 ON RES2.SEAT_ID = S2.SEAT_ID
+         WHERE MOV2.MOVIE_ID = #{movieId}), 
+    2) AS PERCENTAGE
+FROM RESERVE RES
+JOIN MEMBER MEM ON RES.MEMBER_ID = MEM.MEMBER_ID
+JOIN RUNTIME RUN ON RES.RUNTIME_ID = RUN.RUNTIME_ID
+JOIN MOVIE MOV ON RUN.MOVIE_ID = MOV.MOVIE_ID
+JOIN SEAT S ON RES.SEAT_ID = S.SEAT_ID
+WHERE MOV.MOVIE_ID = #{movieId}
+  AND MEM.MEMBER_SEX = 'F'
+GROUP BY MEM.MEMBER_SEX, MOV.MOVIE_ID, MOV.MOVIE_NAME
+ORDER BY PERCENTAGE DESC
+	</select>
+	
+	
+	<!-- 성별에 따른 특정 영화 선호도  : 남성 -->
+	<select id="getMoviePreferByMale" parameterType="string" resultType="double">
+		SELECT 
+    ROUND(
+        SUM(S.SEAT_PRICE) * 100.0 / 
+        (SELECT SUM(S2.SEAT_PRICE)
+         FROM RESERVE RES2
+         JOIN RUNTIME RUN2 ON RES2.RUNTIME_ID = RUN2.RUNTIME_ID
+         JOIN MOVIE MOV2 ON RUN2.MOVIE_ID = MOV2.MOVIE_ID
+         JOIN SEAT S2 ON RES2.SEAT_ID = S2.SEAT_ID
+         WHERE MOV2.MOVIE_ID = #{movieId}), 
+    2) AS PERCENTAGE
+FROM RESERVE RES
+JOIN MEMBER MEM ON RES.MEMBER_ID = MEM.MEMBER_ID
+JOIN RUNTIME RUN ON RES.RUNTIME_ID = RUN.RUNTIME_ID
+JOIN MOVIE MOV ON RUN.MOVIE_ID = MOV.MOVIE_ID
+JOIN SEAT S ON RES.SEAT_ID = S.SEAT_ID
+WHERE MOV.MOVIE_ID = #{movieId}
+  AND MEM.MEMBER_SEX = 'M'
+GROUP BY MEM.MEMBER_SEX, MOV.MOVIE_ID, MOV.MOVIE_NAME
+ORDER BY PERCENTAGE DESC
+	</select>
+	
+	<!-- 이름이 포함된 영화 목록 가져오기 (통합검색)-->
+    <select id="getMovieListByName" parameterType="String" resultType="MovieVO">
+    	
+		SELECT * 
+		FROM MOVIE 
+		WHERE MOVIE_NAME LIKE ('${searchValue}')
+		ORDER BY MOVIE_ID
+    	
+    </select>
+	
+	
+   	
+</mapper>
+

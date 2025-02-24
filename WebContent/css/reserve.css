@@ -1,0 +1,385 @@
+@charset "UTF-8";
+@import "reset.css"; /* 브라우저 기본 스타일 초기화 */
+/* 기본 스타일 */
+	* {
+	    margin: 0;
+	    padding: 0;
+	    box-sizing: border-box;
+	}
+	
+	body {
+	    font-family: 'Arial', sans-serif;
+	    background-color: #f4f4f4;
+	    color: #333;
+	}
+	
+	/* 헤더 */
+	.header {
+	    background-color: #333;
+	    padding: 20px 0;
+	    color: white;
+	}
+	
+	.header_content {
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	    padding: 0 20px;
+	}
+	
+	/* 로고 부분 */
+	.header_content h1 {
+	    display: flex;
+	    align-items: center;
+	    font-size: 2.5rem;
+	}
+	
+	.header_content h1 a {
+	    color: white;
+	    text-decoration: none;
+	}
+	
+	.header_content h1 img {
+	    width: 150px; /* 이미지 크기 조정 */
+	    height: auto;
+	    margin-right: 15px; /* 텍스트와의 간격 추가 */
+	}
+	
+	.header_content h1 span {
+	    font-size: 4rem; /* 텍스트 크기 키움 */
+	    color: #ff66b2;
+	    font-weight: bold; /* 강조 */
+	    margin-top: 50px;
+	}
+	
+	/* 회원 정보 리스트 (우측 상단 링크들) */
+	.memberInfo_list {
+	    list-style: none;
+	    display: flex;
+	    gap: 15px;
+	    margin-top: 100px;
+	}
+	
+	.memberInfo_list li a {
+	    color: #ff66b2; /* 핑크색 */
+	    text-decoration: none;
+	    font-size: 1rem;
+	    font-weight: bold; /* 두꺼운 폰트로 강조 */
+	    transition: color 0.3s ease, transform 0.3s ease; /* 색상 변화와 애니메이션 추가 */
+	}
+	
+	.memberInfo_list li a:hover {
+	    color: #ff80c3; /* 호버 시 색상 변화 */
+	    transform: translateY(-2px); /* 마우스 오버 시 살짝 올라가는 효과 */
+	}
+	
+	/* 네비게이션 */
+	.nav {
+	    background-color: #222;
+	    padding: 15px 0;
+	}
+	
+	.nav_contents {
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	    padding: 0 20px;
+	}
+	
+	/* 네비게이션 메뉴 스타일 */
+	.nav_menu_list {
+	    display: flex; /* 메뉴 항목들을 가로로 배치 */
+	    gap: 20px; /* 메뉴 항목 사이에 여백 추가 */
+	}
+	
+	.nav_menu_list li {
+	    list-style: none; /* 메뉴 항목의 기본 점 제거 */
+	}
+	
+	.nav_menu_list li h2 a {
+	    color: #ff66b2; /* 기본 핑크색 */
+	    text-decoration: none;
+	    font-size: 1.2rem;
+	    font-weight: bold;
+	    
+	    transition: color 0.3s ease, transform 0.3s ease; /* 색상 변화와 애니메이션 추가 */
+	}
+	
+	/* 호버 시 효과 */
+	.nav_menu_list li h2 a:hover {
+	    color: #ff80c3; /* 호버 시 밝은 핑크색 */
+	    transform: translateY(-2px); /* 마우스 오버 시 살짝 올라가는 효과 */
+	}
+	
+	/* 클릭 시 효과 (핑크색으로 변경) */
+	.nav_menu_list li h2 a:active {
+	    color: #ff33cc; /* 클릭 시 색상 변화 */
+	}
+	
+	/* 검색창 */
+	.total_search {
+	    display: flex;
+	    gap: 10px;
+	}
+	
+	.total_search input[type="text"] {
+	    padding: 10px;
+	    font-size: 1rem;
+	    width: 200px;
+	    border: none;
+	    border-radius: 5px;
+	}
+	
+	.total_search input[type="button"] {
+	    padding: 10px 20px;
+	    font-size: 1rem;
+	    background-color: #ff66b2;
+	    color: white;
+	    border: none;
+	    border-radius: 5px;
+	    cursor: pointer;
+	    transition: background-color 0.3s ease;
+	}
+	
+	.total_search input[type="button"]:hover {
+	    background-color: #ff80c3;
+	}
+	
+	/* 배너 */
+	.banner {
+	    background-color: #ff66b2;
+	    color: white;
+	    text-align: center;
+	    padding: 50px 20px;
+	}
+	
+	.banner h1 {
+	    font-size: 2.5rem;
+	}
+	
+	/* 무비 차트 및 좌석 샘플 */
+	.movieChart, .seatType {
+	    background-color: #fff;
+	    padding: 40px 20px;
+	    text-align: center;
+	}
+	
+	.movieChart h1, .seatType h1 {
+	    font-size: 2rem;
+	    color: #333;
+	}
+	
+	hr {
+	    margin: 20px 0;
+	}
+	
+	/* 반응형 디자인 */
+	@media (max-width: 768px) {
+	    .header_content h1 {
+	        font-size: 2rem; /* 모바일에서는 폰트 크기 줄이기 */
+	    }
+	
+	    .header_content h1 img {
+	        width: 120px; /* 로고 크기 축소 */
+	    }
+	
+	    .nav_contents {
+	        flex-direction: column; /* 네비게이션 항목들이 세로로 배치되도록 설정 */
+	        gap: 15px; /* 항목 간 간격 추가 */
+	    }
+	
+	    .nav_menu_list {
+	        flex-direction: column; /* 네비게이션 메뉴 항목을 세로로 배치 */
+	        gap: 10px; /* 항목 간 간격 추가 */
+	    }
+	
+	    .total_search input[type="text"],
+	    .total_search input[type="button"] {
+	        width: 100%; /* 입력 창과 버튼의 너비를 100%로 설정 */
+	    }
+}
+ 
+ 
+ 
+ 
+          /* 기본 스타일 */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    /* 네비게이션 */
+    .navi {
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px;
+        background-color: #333;
+    }
+
+    .navi button {
+        margin-right: 20px;
+        padding: 10px 20px;
+        color: white;
+        background-color: #ff66b2;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .navi button:hover {
+        background-color: #ff80c3;
+        transform: scale(1.05); /* 버튼 호버 시 크기 증가 */
+    }
+
+    /* 단계별 섹션 */
+    .stepsMain {
+        margin: 40px auto;
+        width: 90%;
+        max-width: 1200px;
+    }
+
+    .steps {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .step {
+        background-color: white;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 23%;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .step:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .step span {
+        display: block;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .step ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .step li {
+        margin-top: 14px;
+    }
+
+    .step li > a {
+        text-decoration: none;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        display: inline-block;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .step li > a:hover {
+        background-color: #ff66b2;
+        color: white;
+    }
+
+    .step li a.selected {
+        background-color: #ff66b2;
+        color: white;
+    }
+
+    .step li span {
+        font-size: 0.9rem;
+        color: #888;
+    }
+/* footer 스타일 */
+footer.ticket_choose {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 전체 footer를 수평으로 가운데 정렬 */
+    background-color: #ff66b2;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* footer 너비를 100%로 설정 */
+    box-sizing: border-box; /* padding이 포함되도록 설정 */
+}
+
+footer.ticket_choose img {
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+    margin-right: 20px; /* 이미지와 텍스트 간의 간격을 좁힘 */
+}
+
+footer.ticket_choose .info-container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-right: 20px; /* 정보 텍스트와 버튼 간의 간격을 조절 */
+}
+
+footer.ticket_choose .info {
+    font-size: 1.2rem; /* 정보 텍스트 크기 줄임 */
+    margin-bottom: 10px; /* 각 항목 간 간격 줄임 */
+}
+
+footer.ticket_choose .actions {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem; /* 텍스트 크기 조절 */
+    justify-content: center; /* 버튼들을 중앙 정렬 */
+    gap: 100px; /* 결제와 좌석선택 버튼 사이의 간격을 150px로 설정 */
+    margin-right: 20px; /* actions와 버튼 간의 간격을 넓히기 위해 오른쪽 여백 추가 */
+}
+
+footer.ticket_choose button {
+    background-color: #ff80c3;
+    color: white;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 50px; /* 버튼과 텍스트 간의 간격을 50px로 설정 */
+}
+
+footer.ticket_choose button:hover {
+    background-color: #ff66b2;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    footer.ticket_choose {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    footer.ticket_choose img {
+        width: 120px;
+        height: 120px;
+        margin: 0 0 20px 0; /* 모바일에서는 이미지 아래쪽 여백 */
+    }
+
+    footer.ticket_choose button {
+        width: 100%;
+        font-size: 1.2rem;
+        margin: 10px 0; /* 버튼 간격 */
+    }
+}

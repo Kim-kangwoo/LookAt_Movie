@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+.totalMain {
+
+	display: flex;
+	justify-content: center;
+
+}
+
+.totalSearch {
+	
+	width: 1200px;
+	height: 500px;
+	margin: 0px 40px;
+	justify-content: center;
+
+}
+
+.totalSearch_title {
+
+	text-align: left;
+	margin: 60px 0px;
+	font-size: 28px;
+	font-weight: bold;
+
+}
+
+.totalSearch_title > span {
+	
+	display: block;
+	font-size: 20px;
+	margin: 30px;
+	
+
+}
+
+
+.totalSearch_contents {
+	
+	height: 200vh;
+
+}
+
+.totalSearch_contents_findMovie {
+	
+	display: flex;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+	padding-bottom: 40px;
+	padding-top: 30px;
+	
+}
+
+.totalSearch_contents_moiveDetail{
+	
+	width: 900px;
+	padding-left: 20px;
+	padding-top: 10px;
+	position: relative; 
+	
+}
+
+.totalSearch_contents_moiveDetail_name {
+
+	font-size: 30px;
+	font-weight: bold;
+	position: absolute;
+	top: 5%;
+}
+
+.totalSearch_contents_moiveDetail_star {
+	
+	position: absolute;
+	margin-top: 15px;
+	top: 15%;
+
+}
+
+.totalSearch_contents_moiveDetail_story {
+
+	position: absolute;
+	top: 30%;
+	
+}
+
+.totalSearch_contents_moiveDetail_button {
+	
+	width: 450px;
+	position: absolute;
+	display:flex;
+	top: 80%;
+
+}
+
+
+
+.btn-gradient {
+
+	display: block;
+  	color : inherit;
+  	text-decoration: none;
+  	width: 80px;
+  	height: 30px;
+  	margin: 10px;
+  	padding: 10px 24px;  
+  	padding-top: 12px;
+  	font-size: 18px;
+  	border: 1px solid rgba(0, 0, 0, 0.2);
+  	border-radius: 4px;
+  	text-align: center;
+}
+
+.btn-gradient:hover  {
+  	
+  	opacity: 0.85;
+}
+
+.red {
+	
+	background: #fa5a5a;
+
+}
+
+
+
+
+
+.moviePoster {
+
+	border-radius: 15px;
+	width: 300px;
+	height: 380px;
+
+}

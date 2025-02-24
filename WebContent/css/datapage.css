@@ -1,0 +1,107 @@
+@charset "UTF-8";
+@import "reset.css";
+
+@font-face {
+    font-family: 'Cafe24Simplehae-v2.0';
+    src: url('../font/Cafe24Simplehae-v2.0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Cafe24Danjunghae-v2.0';
+    src: url('../font/Cafe24Danjunghae-v2.0.ttf') format('truetype');
+}
+
+/* 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cafe24Simplehae-v2.0', sans-serif;
+}
+
+/* 배경 설정 */
+body {
+    background-color: #000;
+    color: #ff66b2;
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+/* 페이지 타이틀 */
+.page-title {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #ff66b2;
+}
+
+/* 컨테이너 설정 */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* 영화 통계 테이블 컨테이너 */
+.stats-table-container {
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* 테이블 스타일 */
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #ff66b2;
+    text-align: center;
+    font-size: 16px;
+}
+
+.stats-table th, .stats-table td {
+    padding: 12px;
+    border: 1px solid #ff66b2;
+}
+
+.stats-table th {
+    background-color: #ff66b2;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.stats-table tr:nth-child(even) {
+    background-color:  #333333;
+}
+
+.stats-table tr:hover {
+    background-color: #ff66b2;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 영화 링크 스타일 */
+.movie-link {
+    text-decoration: none;
+    color: #ff66b2;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.movie-link:hover {
+    color: #ffffff;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .stats-table {
+        font-size: 14px;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+}

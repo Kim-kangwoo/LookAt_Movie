@@ -1,0 +1,118 @@
+@charset "UTF-8"; /* 문자 인코딩 설정 */
+@import "reset.css"; /* 브라우저 기본 스타일 초기화 */
+
+/* 기본 스타일 */
+@font-face {
+    font-family: 'Cafe24Simplehae-v2.0';
+    src: url('../font/Cafe24Simplehae-v2.0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Cafe24Danjunghae-v2.0';
+    src: url('../font/Cafe24Danjunghae-v2.0.ttf') format('truetype');
+}
+
+* {
+    font-family: 'Cafe24Simplehae-v2.0', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000; /* 어두운 배경 */
+    color: #ff66b2; /* 핑크 텍스트 */
+    align-items: center; /* 가로 중앙 정렬 */
+}
+
+/* 페이지 제목 스타일 */
+.page-title {
+    text-align: center;
+    color: #ff66b2;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* 영화관 매출 제목 */
+.theater-sales-title {
+    text-align: center;
+    color: #ff66b2;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+/* 테이블 스타일 */
+.sales-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #222222; /* 어두운 회색 배경 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sales-table th {
+    background-color: #ff66b2; /* 헤더 핑크 배경 */
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sales-table td {
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border: 1px solid #ff66b2;
+}
+
+/* 짝수 행 스타일 */
+.sales-table tr:nth-child(even) {
+    background-color: #333333; /* 짝수 행 어두운 회색 */
+}
+
+/* 순위 열 */
+.rank {
+    font-weight: bold;
+    color: #ff66b2;
+}
+
+/* 영화 제목 링크 */
+.movie-title a {
+    color: #ff66b2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.movie-title a:hover {
+    text-decoration: underline;
+    color: #ff99cc; /* 호버 시 밝은 핑크 */
+}
+
+/* 매출 열 */
+.sales {
+    color: #ff66b2;
+}
+
+/* 총 매출 스타일 */
+.total-row {
+    background-color: #444444;
+    font-weight: bold;
+}
+
+.total-text {
+    text-align: right;
+    padding-right: 20px;
+    color: #ff66b2 !important;
+}
+
+.total-sales {
+    color: #ff66b2 !important;
+}
+
+/* 상영 중인 영화가 없을 경우 메시지 */
+.no-data {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+}

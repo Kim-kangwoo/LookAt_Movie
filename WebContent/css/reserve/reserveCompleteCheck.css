@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #262626;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #ff66b2;
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .movie-info, .payment-info, .terms-agree {
+        margin-bottom: 30px;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .movie-info span, .payment-info span {
+        display: block;
+        font-size: 16px;
+        margin: 10px 0;
+        color: #555;
+    }
+
+    .movie-poster {
+        width: 120px;  /* 이미지 크기 변경 */
+        height: 180px;  /* 이미지 크기 변경 */
+        background-color: #ddd;
+        border-radius: 8px;
+        background-size: cover;
+        background-position: center;
+        margin-right: 20px;
+    }
+
+    .movie-info {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .movie-info span {
+        font-size: 18px;
+        color: #333;
+    }
+
+    .payment-info {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .terms-agree {
+        margin-top: 30px;
+        height: 180px;
+    }
+
+    .terms-agree div {
+        margin-bottom: 20px;
+    }
+    
+    .movie_info_child{
+    	
+    	margin-top: 10px;
+    
+    }
+
+    .terms-agree input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+    .checkbox-label {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #ff4081;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s ease;
+        margin-top: 20px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .button:hover {
+        background-color: #ff66b2;
+    }
+
+    .separator {
+        margin: 30px 0;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .select-all-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .select-all-container input {
+        margin-right: 10px;
+    }
+
+    /* 상위 레이아웃 설정 */
+    .main-content {
+        margin-top: 20px;
+    }
+    

@@ -1,0 +1,105 @@
+@charset "UTF-8";
+@import "reset.css";
+
+@font-face {
+    font-family: 'Cafe24Simplehae-v2.0';
+    src: url('../font/Cafe24Simplehae-v2.0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Cafe24Danjunghae-v2.0';
+    src: url('../font/Cafe24Danjunghae-v2.0.ttf') format('truetype');
+}
+
+* {
+	font-family: 'Cafe24Simplehae-v2.0';
+}
+
+/* 페이지 전체 스타일 */
+body {
+    background-color: #000; /* 블랙 배경 */
+    color: #ff66b2; /* 핑크 톤 텍스트 */
+    margin-bottom: 30px;
+}
+
+/* h3 태그 스타일 */
+h3 {
+    font-size: 30px;
+    text-align: center;
+    color: #ff66b2; /* 핑크 텍스트 */
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+/* 폼 스타일 */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+    background: #1c1c1c; /* 다크 그레이 배경 */
+    padding: 20px;
+    border: 2px solid #ff66b2; /* 핑크 테두리 */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(248, 198, 216, 0.3);
+}
+
+/* 입력 필드 스타일 */
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #ff66b2; /* 핑크 테두리 */
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background-color: #2c2c2c; /* 어두운 입력 필드 배경 */
+    color: #ffffff !important; /* 핑크 톤 텍스트 */
+}
+
+/* 입력 필드 포커스 스타일 */
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    outline: none; /* 기본 아웃라인 제거 */
+    border-color: #ff3399; /* 포커스 시 밝은 핑크 테두리 */
+    box-shadow: 0 0 5px rgba(255, 102, 178, 0.7); /* 포커스 시 테두리 그림자 */
+}
+
+textarea.large-input {
+    height: 100px;
+    resize: none;
+}
+
+/* 버튼 스타일 */
+input[type="submit"],
+input[type="reset"] {
+    padding: 10px 20px;
+    border: 2px solid #ff66b2; /* 핑크 테두리 */
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+    background-color: transparent; /* 투명 배경 */
+    color: #ff66b2; /* 핑크 텍스트 */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 버튼 활성화 시 효과 */
+input[type="submit"]:active,
+input[type="reset"]:active {
+    background-color: #cc5299; /* 눌렀을 때 핑크 계열 색상 */
+    color: #000;
+    transition: background-color 0.1s, color 0.1s; /* 눌렀을 때의 짧은 효과 */
+}
+
+input[type="submit"]:hover {
+    background-color: #ff66b2; /* 핑크 배경 */
+    color: #000; /* 블랙 텍스트 */
+}
+
+input[type="reset"]:hover {
+    background-color: #ff66b2; /* 핑크 배경 */
+    color: #000; /* 블랙 텍스트 */
+}

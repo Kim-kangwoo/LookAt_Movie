@@ -1,0 +1,144 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<style>
+
+/* 기본 스타일 */
+@font-face {
+    font-family: 'Cafe24Simplehae-v2.0';
+    src: url('../font/Cafe24Simplehae-v2.0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Cafe24Danjunghae-v2.0';
+    src: url('../font/Cafe24Danjunghae-v2.0.ttf') format('truetype');
+}
+
+* {
+    font-family: 'Cafe24Simplehae-v2.0';
+    margin: 0;
+    padding: 0;
+}
+
+/* 네비게이션 */
+.nav {
+    background-color: #222; /* 네비게이션 바 배경 색 */
+    padding: 15px 0;
+}
+
+.nav_contents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* 네비게이션 메뉴 스타일 */
+.nav_menu_list {
+    display: flex; /* 메뉴 항목들을 가로로 배치 */
+    gap: 40px; /* 메뉴 항목 사이에 여백 추가 */
+}
+
+.nav_menu_list li {
+    list-style: none; /* 메뉴 항목의 기본 점 제거 */
+}
+
+.nav_menu_list li h2 a {
+    color: #ff66b2; /* 기본 핑크색 */
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease; /* 색상 변화와 애니메이션 추가 */
+}
+
+/* 호버 시 효과 */
+.nav_menu_list li h2 a:hover {
+    color: #ff80c3; /* 호버 시 밝은 핑크색 */
+    transform: translateY(-2px); /* 마우스 오버 시 살짝 올라가는 효과 */
+}
+
+/* 클릭 시 효과 (핑크색으로 변경) */
+.nav_menu_list li h2 a:active {
+    color: #ff33cc; /* 클릭 시 색상 변화 */
+}
+
+/* 전체 검색 영역 스타일 */
+.total_search {
+    display: flex;
+    gap: 10px;
+}
+
+.total_search input[type="text"] {
+    padding: 10px;
+    font-size: 1rem;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333; /* 어두운 배경색 */
+    color: #ff66b2; /* 핑크 텍스트 */
+}
+
+.total_search input[type="button"] {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ff66b2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.total_search input[type="button"]:hover {
+    background-color: #ff80c3; /* 호버 시 밝은 핑크 */
+}
+
+</style>
+
+<script>
+
+		// 통합 검색 입력값 controller로 전달
+		function totalSearch() {
+			
+			let searchValue = document.getElementById('searchValue').value;
+			if (searchValue != ""){
+				location.href='${pageContext.request.contextPath }/controller?command=movieTotalSearch&searchValue=' + searchValue;	
+			}
+	
+		}
+		
+</script>
+
+
+
+<!-- 네비게이션 -->
+	<div class="nav">
+		<div class="nav_contents">
+			<ul class="nav_menu_list">
+				<li>
+					<h2>
+						<a href="${pageContext.request.contextPath }/controller?command=moviePage">영화</a>
+					</h2>
+				</li>
+				<%-- 
+				<li>
+					<h2>
+						<a href="${pageContext.request.contextPath }/controller?command=theater">극장</a>
+					</h2>
+				</li>
+				 --%>
+				<li>
+					<h2>
+						<a href="${pageContext.request.contextPath }/controller?command=reserve">예매</a>
+					</h2>
+				</li>
+			</ul>
+			<div class="total_search">
+				<input id="searchValue" type="text" name="totalsearch" placeholder="영화검색"> 
+				<input type="button" name="btn_totalSearch" onclick="totalSearch()" value="검색">
+			</div>
+			
+			
+		</div>
+	</div>

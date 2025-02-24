@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+  .navbar {
+            background-color: #ff66b2; /* 핑크색 배경 */
+        }
+        .navbar-brand {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .navbar-brand img {
+            margin-right: 10px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* 블랙 배경 */
+    color: white;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    padding: 50px;
+    background-color: #1e1e1e; /* 어두운 배경 */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #ff66b2; /* 핑크 포인트 */
+    font-weight: bold;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+main {
+    padding: 40px;
+}
+
+.point-card {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.point-card h2 {
+    font-size: 2rem;
+    color: #00bcd4; /* 파란색 포인트 */
+    margin-bottom: 20px;
+}
+
+.point-card p {
+    font-size: 2.5rem;
+    color: #ff66b2; /* 핑크 포인트 */
+    font-weight: bold;
+}
+
+.actions {
+    text-align: center;
+}
+
+button {
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    background-color: #ff66b2; /* 핑크 버튼 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff3399; /* 더 어두운 핑크 */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    margin-top: 150px;
+}
+
+footer p {
+    font-size: 1rem;
+}
+

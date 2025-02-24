@@ -1,0 +1,182 @@
+@charset "UTF-8";
+@import "reset.css"; /* 브라우저 기본 스타일 초기화 */
+
+/* 기본 스타일 */
+@font-face {
+   font-family: 'Cafe24Simplehae-v2.0';
+   src: url('../font/Cafe24Simplehae-v2.0.ttf') format('truetype');
+}
+
+@font-face {
+   font-family: 'Cafe24Danjunghae-v2.0';
+   src: url('../font/Cafe24Danjunghae-v2.0.ttf') format('truetype');
+}
+
+* {
+   font-family: 'Cafe24Simplehae-v2.0', sans-serif;
+   box-sizing: border-box;
+}
+
+body {
+   background-color: #000;
+   color: #ff66b2;
+   min-height: 100vh;
+}
+
+.page-title {
+   text-align: center;
+   font-size: 30px;
+   margin-top: 30px;
+   color: #ff66b2;
+}
+
+h2 {
+   font-size: 20px;
+   margin-bottom: 20px;
+}
+
+/* 공통 스타일 */
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+input[type="submit"], a {
+    text-align: center;
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 왼쪽 컨테이너 버튼 스타일 */
+.left-container-button a {
+    background-color: #000000;
+    color: white;
+    width: 50%;
+    text-align: center;
+    display: block;
+    padding: 15px;
+    font-size: 18px;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: 2px solid #ff66b2;
+}
+
+.left-container-button a:hover {
+    background-color: #ff66b2;
+}
+
+/* 오른쪽 컨테이너 버튼 스타일 */
+.right-container-button input[type="submit"] {
+    background-color: #000000;
+    color: white;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #ff66b2;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.right-container-button input[type="submit"]:hover {
+    background-color: #ff66b2;
+    border: 2px solid #ff66b2;
+    border-radius: 5px;
+}
+
+/* 왼쪽 컨테이너 스타일 */
+.left-container {
+    width: 48%;
+    padding: 20px;
+}
+
+.chart-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.member-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.member-table th, .member-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ff66b2;
+}
+
+.member-table th {
+    background-color: #ff66b2; /* 핑크색 배경 */
+    color: white; /* 흰색 글자 */
+    font-weight: bold;
+}
+
+.member-table td {
+   background-color: #222;
+}
+
+/* 오른쪽 컨테이너 스타일 */
+.right-container {
+    width: 48%;
+    padding: 20px;
+}
+
+.search-form {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* 오른쪽 컨테이너 테이블 스타일 (검색 결과 테이블) */
+.member-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.member-list-table th, .member-list-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ff66b2;
+}
+
+.member-list-table th {
+    background-color: #ff66b2; /* 핑크색 배경 */
+    color: white;
+    font-weight: bold;
+}
+
+.member-list-table td {
+    background-color: #222; /* 검정 배경 */
+    color: #ff66b2; /* 핑크색 글자 */
+}
+
+/* 검색 결과 테이블 - hover 효과 */
+.member-list-table tr:hover {
+    background-color: #444;
+}
+

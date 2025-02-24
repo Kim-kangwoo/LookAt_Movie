@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="runtime">
+  	
+  <!-- 영화관, 영화ID를 통한 런타임 가져오기 -->
+  <select id="runtimeList" parameterType="HashMap" resultType="RuntimeVO">
+   	
+   		SELECT *
+		FROM RUNTIME
+		WHERE THEATER_ID = #{theaterId}
+		AND MOVIE_ID = #{movieId}
+		AND RUN_DATE = #{date}
+		ORDER BY START_TIME
+   	
+   </select>
+  	
+  <!-- Runtime 테이블 날짜 추출 -->	
+  <select id="dateList" parameterType="HashMap" resultType="string">
+   	
+   	
+   		SELECT DISTINCT RUN_DATE
+		FROM RUNTIME
+		WHERE THEATER_ID = #{theaterId}
+		AND MOVIE_ID = #{movieId}
+		ORDER BY RUN_DATE
+   	
+   </select>
+   
+   <!-- 런타임 객체 하나 추출 -->
+   <select id="findOneRuntime" parameterType="int" resultType="RuntimeVO">
+   	
+   	
+   		SELECT *
+   		FROM RUNTIME
+   		WHERE RUNTIME_ID = #{runtimeId}
+   	
+   </select>
+   
+   <!-- 남은 좌석 수 업데이트 -->
+   <update id="updateLeftSeat" parameterType="HashMap">
+   		
+   		UPDATE RUNTIME SET LEFT_SEAT_COUNT = #{updateSeatCount}
+		WHERE RUNTIME_ID = #{runtimeId}
+		
+		
+   	
+   </update>
+   
+</mapper>
+

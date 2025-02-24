@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="reserve">
+   
+   <!-- 예약 삽입  -->
+   <insert id="reserveInsert" parameterType="HashMap">
+   		
+   	  INSERT INTO RESERVE (RESERVE_NUM, RUNTIME_ID, SEAT_ID, PAY_DATE, THEATER_ID, MEMBER_ID)
+	  VALUES(RESERVE_NUM.NEXTVAL, #{runtimeId}, #{seatId}, TO_CHAR(SYSDATE,  'YYYY-MM-DD HH24:MI:SS'), #{theaterId}, #{memberId})
+   	
+   </insert>
+   
+   <!-- 멤버ID를 이용한 예약 리스트 추출  -->
+   <select id="getReserveList" parameterType="int" resultType="ReserveVO">
+   	
+   		SELECT *
+   		FROM RESERVE
+   		WHERE MEMBER_ID = #{memberId}
+   		ORDER BY PAY_DATE, THEATER_ID, SEAT_ID
+   		
+   </select>
+   
+   <!-- PayDate를 이용한 예약 리스트 추출  -->
+   <select id="getReserveListByPayDate" parameterType="HashMap" resultType="ReserveVO">
+   	
+   		SELECT *
+   		FROM RESERVE
+   		WHERE MEMBER_ID = #{memberId}
+   		AND PAY_DATE = #{selectPayDate}
+   		ORDER BY THEATER_ID, SEAT_ID
+   		
+   </select>
+   
+   <!-- 중복을 제거한 결제일 리스트 추출  -->
+   <select id="getPayDateList" parameterType="int" resultType="string">
+   	
+   		SELECT DISTINCT PAY_DATE
+   		FROM RESERVE
+   		WHERE MEMBER_ID = #{memberId}
+   		ORDER BY PAY_DATE
+   		
+   </select>
+   
+   <!-- memberId를 이용한 중복 제거 runtimeId 추출  -->
+   <select id="getRuntimeIdDis" parameterType="int" resultType="int">
+   	
+   		SELECT DISTINCT RUNTIME_ID
+		FROM RESERVE
+		WHERE MEMBER_ID = #{memberId}
+		ORDER BY RUNTIME_ID
+   		
+   </select>
+
+   <!-- 예약넘버를 이용한 예약 삭제 -->
+   <delete id="deleteReserve" parameterType="int">
+   	
+   		DELETE FROM RESERVE WHERE RESERVE_NUM = #{reserveNum}
+   
+   </delete>
+   
+   <select id="getReserveCount" parameterType="int" resultType="int">
+   		
+   		SELECT COUNT(*) 
+		FROM RESERVE 
+		WHERE MEMBER_ID = #{memberId}
+   
+   </select>
+   
+   
+   
+</mapper>
+

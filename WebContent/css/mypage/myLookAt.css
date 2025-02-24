@@ -1,0 +1,133 @@
+@charset "UTF-8";
+    /* 기본 스타일 */
+		@font-face {
+		    font-family: 'Cafe24Simplehae-v2.0';
+		    src: url('../font/Cafe24Simplehae-v2.0.ttf') format('truetype');
+		}
+		
+		@font-face {
+		    font-family: 'Cafe24Danjunghae-v2.0';
+		    src: url('../font/Cafe24Danjunghae-v2.0.ttf') format('truetype');
+		}
+        * {
+          
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black; /* 어두운 배경색 */
+           
+            color: white; /* 텍스트 색상 하얀색 */
+        }
+
+        .navbar {
+            background-color: #ff66b2; /* 핑크색 배경 */
+        }
+
+        .navbar-brand {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-brand img {
+            margin-right: 10px;
+        }
+
+        .container {
+            margin-top: 50px;
+            max-width: 800px; /* 화면 크기에 맞는 너비 설정 */
+        }
+
+        .table-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh; /* 화면 전체 높이 */
+        }
+
+        /* 테이블 스타일 */
+        .member-table {
+            width: 90%;
+            max-width: 900px;
+            border-collapse: collapse;
+            background-color: #222222;
+            text-align: left;
+            box-shadow: 0px 4px 8px rgba(255, 102, 178, 0.2);
+        }
+
+        /* 테이블 헤더 */
+        .member-table th {
+            background-color: #ff66b2; /* 핑크 배경 */
+            color: #000; /* 검정 텍스트 */
+            padding: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* 테이블 본문 */
+        .member-table td {
+            padding: 10px;
+            border: 1px solid #ff66b2; /* 핑크 테두리 */
+            color: #ffffff; /* 흰색 텍스트 */
+            text-align: center;
+        }
+
+        /* 짝수 행 스타일 */
+        .member-table tr:nth-child(even) {
+            background-color: #333333; /* 짝수 행 배경색 */
+        }
+
+        /* 테이블 행 hover 효과 */
+        .member-table tr:hover {
+            background-color: #555555;
+            transition: background-color 0.3s;
+        }
+
+        h2 {
+            color: #ff66b2; /* 제목 핑크색 */
+            font-weight: bold;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #fff; /* 푸터 텍스트 색상 */
+        }
+
+        .btn-custom {
+            background-color: #ff66b2;
+            color: white;
+            font-size: 1rem;
+            border-radius: 20px;
+            padding: 10px 20px;
+            text-align: center;
+            width: 100%;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: #e60099; /* 호버 시 짙은 핑크 */
+        }
+
+        /* 비밀번호 입력 필드와 버튼을 동일한 줄에 정렬 */
+.password-input-container {
+    display: flex;
+    align-items: center;  /* 세로 중앙 정렬 */
+}
+
+.password-input-container input {
+    flex-grow: 1;  /* 입력 필드가 가능한 공간을 채우도록 */
+    margin-right: 10px;  /* 버튼과의 간격 */
+}
+
+/* 버튼 스타일 수정 */
+.password-input-container button {
+    padding: 5px 15px;  /* 버튼 크기 조정 */
+    font-size: 0.9rem;  /* 버튼 텍스트 크기 */
+}
+

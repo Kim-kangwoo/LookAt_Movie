@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="theater">
+  	
+  <!-- 영화관 목록 추출 -->
+  <select id="theaterList" resultType="TheaterVO">
+   		
+   		SELECT * FROM THEATER
+   		
+  </select>
+  
+   <!-- 영화관 하나 추출 -->
+  <select id="getFindOneTheater" parameterType="int" resultType="TheaterVO">
+   	
+   	
+   		SELECT *
+   		FROM THEATER
+   		WHERE THEATER_ID = #{theaterId}
+   	
+   </select>
+   
+   <!-- 런타임 ID를 이용해 영화관 이름 추출 -->
+   <select id="getTheaterNameByRuntimeId" parameterType="int" resultType="string">
+   		<![CDATA[
+   		SELECT M.THEATER_NAME
+		FROM THEATER M, (SELECT THEATER_ID
+        	    	   FROM RUNTIME 
+            	       WHERE RUNTIME_ID = #{runtimeId}) RT
+		WHERE M.THEATER_ID = RT.THEATER_ID
+ 		]]>
+   </select>
+   
+    <!-- 전체 영화관 수 -->
+    <select id="getTheaterCount" resultType="int">
+    	SELECT COUNT(*) FROM THEATER
+    </select>
+    
+    <!-- 각 영화관 지점별 매출 -->
+    <select id="getTheaterSaleList" resultType="TheaterDTO">
+   		SELECT T.THEATER_ID, T.THEATER_NAME, SUM(S.SEAT_PRICE) AS THEATER_SALE
+		FROM RESERVE RES
+		LEFT JOIN SEAT S ON RES.SEAT_ID = S.SEAT_ID
+		LEFT JOIN RUNTIME RUN ON RES.RUNTIME_ID = RUN.RUNTIME_ID
+		LEFT JOIN MOVIE M ON RUN.MOVIE_ID = M.MOVIE_ID
+		LEFT JOIN THEATER T ON RES.THEATER_ID = T.THEATER_ID
+		GROUP BY T.THEATER_ID, T.THEATER_NAME
+		ORDER BY THEATER_SALE DESC
+    </select>
+   
+   <!-- 영화관(CGV) 총매출 -->
+	<select id="getTotalSale" resultType="int">
+		SELECT SUM(S.SEAT_PRICE) AS TOTAL_SALE
+		FROM RESERVE RES
+		LEFT JOIN SEAT S ON RES.SEAT_ID = S.SEAT_ID
+		LEFT JOIN RUNTIME RUN ON RES.RUNTIME_ID = RUN.RUNTIME_ID
+		LEFT JOIN MOVIE M ON RUN.MOVIE_ID = M.MOVIE_ID
+		LEFT JOIN THEATER T ON RES.THEATER_ID = T.THEATER_ID
+	</select>
+	
+	<!-- 영화관별 상영 영화, 영화별 매출 순위 -->
+	<select id="getTheaterMovieSaleList" parameterType="string" resultType="TheaterDTO">
+		SELECT T.THEATER_NAME AS THEATER_NAME
+                    , M.MOVIE_ID
+       				, M.MOVIE_NAME AS MOVIE_NAME
+       				, SUM(S.SEAT_PRICE) AS MOVIE_SALE
+		FROM RESERVE RES
+		LEFT JOIN SEAT S ON RES.SEAT_ID = S.SEAT_ID
+		LEFT JOIN RUNTIME RUN ON RES.RUNTIME_ID = RUN.RUNTIME_ID
+		LEFT JOIN MOVIE M ON RUN.MOVIE_ID = M.MOVIE_ID
+		LEFT JOIN THEATER T ON RES.THEATER_ID = T.THEATER_ID
+		WHERE T.THEATER_ID = #{theaterId}
+		GROUP BY T.THEATER_NAME, M.MOVIE_NAME, M.MOVIE_ID
+		ORDER BY MOVIE_SALE DESC
+	</select>
+	
+	<!-- 영화관 이름 -->
+	<select id="getTheaterName" parameterType="string" resultType="string">
+		SELECT THEATER_NAME
+		FROM THEATER
+		WHERE THEATER_ID = #{theaterId}
+	</select>
+	
+	<!-- 영화관 1개의 총매출 조회-->
+	<select id="getTheaterSale" parameterType="string" resultType="int">
+		SELECT SUM(S.SEAT_PRICE) AS THEATER_SALE
+		FROM THEATER T
+		JOIN RESERVE RES ON T.THEATER_ID = RES.THEATER_ID
+		JOIN SEAT S ON RES.SEAT_ID = S.SEAT_ID
+		WHERE T.THEATER_ID = #{theaterId}
+		GROUP BY T.THEATER_NAME
+		ORDER BY T.THEATER_NAME
+	</select>
+	
+	<!-- 무비 ID를 이용한 영화관 리스트 추출 -->
+  	<select id="getTheaterListByMovieId" parameterType="int" resultType="TheaterVO">
+   		
+   		<![CDATA[
+		SELECT T.*
+		FROM THEATER T, (SELECT THEATER_ID FROM CINEMA WHERE MOVIE_ID = #{movieId}) M
+		WHERE T.THEATER_ID = M.THEATER_ID
+	   	]]>
+   		
+   </select>
+	
+	
+   
+</mapper>
+

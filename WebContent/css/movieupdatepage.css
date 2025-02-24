@@ -1,0 +1,134 @@
+@charset "UTF-8";
+@import "reset.css";
+
+@font-face {
+    font-family: 'Cafe24Simplehae-v2.0';
+    src: url('../font/Cafe24Simplehae-v2.0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Cafe24Danjunghae-v2.0';
+    src: url('../font/Cafe24Danjunghae-v2.0.ttf') format('truetype');
+}
+
+* {
+    font-family: 'Cafe24Simplehae-v2.0';
+}
+
+
+/* 전체 배경 색상 */
+body {
+    background-color: #000; /* 블랙 배경 */
+    color: #ff66b2; /* 핑크 톤 텍스트 */
+}
+
+h3 {
+	font-size: 30px;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+/* 컨테이너: 왼쪽과 오른쪽 영역 */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 20px;
+}
+
+.left-container, .right-container {
+    width: 48%;
+}
+
+/* 검색 폼 스타일 */
+.left-container form {
+    display: flex;
+    flex-direction: column;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    background-color: #444;
+    color: #fff;
+}
+
+input[type="submit"] {
+    background-color: #ff66b2;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff3385;
+}
+
+/* 영화 제목 링크 스타일 */
+.movie-link {
+    color: #ff66b2;
+    text-decoration: none;
+}
+
+.movie-link:hover {
+    text-decoration: underline;
+}
+
+/* 수정 버튼 스타일 */
+.update-btn {
+    background-color: #ff66b2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.update-btn:hover {
+    background-color: #ff3385;
+}
+
+/* 테이블 스타일 */
+#movieTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #222;
+}
+
+#movieTable th, #movieTable td {
+    border: 1px solid #444;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+#movieTable th {
+    background-color: #333;
+    color: #fff;
+}
+
+#movieTable td {
+    color: #ddd;
+}
+
+/* 테이블 내 링크 스타일 */
+#movieTable td a {
+    color: #ff66b2;
+    text-decoration: none;
+}
+
+#movieTable td a:hover {
+    text-decoration: underline;
+}

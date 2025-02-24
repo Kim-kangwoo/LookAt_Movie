@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="amountpaid">
+	
+	<!-- 결제금액 할인내역 가져오기 -->
+	<select id="getAmountpaid" parameterType="Hashmap" resultType="AmountpaidVO">
+	
+		SELECT *
+		FROM AMOUNTPAID
+		WHERE PAY_DATE = #{selectPayDate}
+		AND MEMBER_ID = #{memberId}
+	
+	</select>
+	
+	<!-- 결제금액 결제내역 삽입 -->
+  	<select id="insert" parameterType="Hashmap">
+  	
+  		INSERT INTO AMOUNTPAID VALUES 
+  		(AMOUNTPAID_ID_SEQ.NEXTVAL, #{leftTotalPrice}, TO_CHAR(SYSDATE,  'YYYY-MM-DD HH24:MI:SS'), #{memberId}, #{discountContent})
+  		
+  	</select>	
+  	
+</mapper>
+

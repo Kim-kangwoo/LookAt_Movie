@@ -1,0 +1,223 @@
+@charset "UTF-8";
+
+ @font-face {
+    font-family: 'Cafe24Simplehae-v2.0';
+    src: url('../font/Cafe24Simplehae-v2.0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Cafe24Danjunghae-v2.0';
+    src: url('../font/Cafe24Danjunghae-v2.0.ttf') format('truetype');
+}
+ 	/* 기본 스타일 */
+	* {
+	    margin: 0;
+	    padding: 0;
+	    box-sizing: border-box;
+	}
+	
+	body {
+	    font-family: 'Arial', sans-serif;
+	    background-color: #000000;
+	    color: #333;
+	}
+	
+	
+	
+	/* 배너 */
+	.banner {
+	    background-color: #ff66b2;
+	    color: white;
+	    text-align: center;
+	    padding: 50px 20px;
+	}
+	
+	.banner h1 {
+	    font-size: 2.5rem;
+	}
+	
+	/* 무비 차트 및 좌석 샘플 */
+	.movieChart, .seatType {
+	    background-color: #fff;
+	    padding: 40px 20px;
+	    text-align: center;
+	}
+	
+	.movieChart h1, .seatType h1 {
+	    font-size: 2rem;
+	    color: #333;
+	}
+	
+	hr {
+	    margin: 20px 0;
+	}
+	
+
+
+    /* 네비게이션 */
+    .navi {
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px;
+        background-color: #333;
+    }
+
+    .navi button {
+        margin-right: 20px;
+        padding: 10px 20px;
+        color: white;
+        background-color: #ff66b2;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .navi button:hover {
+        background-color: #ff80c3;
+        transform: scale(1.05); /* 버튼 호버 시 크기 증가 */
+    }
+
+    /* 단계별 섹션 */
+    .stepsMain {
+    	margin: 350px auto;;
+        margin-top: 300px;
+        width: 90%;
+        max-width: 1200px;
+    }
+
+    .steps {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .step {
+        background-color: white;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 23%;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .step:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .step span {
+        display: block;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .step ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .step li {
+        margin-top: 14px;
+    }
+
+    .step li > a {
+    
+        text-decoration: none;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        display: inline-block;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        
+    }
+	
+	.selected {
+		
+		background-color: #ff66b2;
+		border-radius: 8px;
+        color: white;
+	    transform: scale(1.1);
+	    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+	    font-size: 1.0rem;
+		
+	}
+	
+	
+    .step li > a:hover {
+        background-color: #ff66b2;
+        color: white;
+    }
+
+    .step li span {
+        font-size: 0.9rem;
+        color: #888;
+    }
+    
+  
+/* 티켓 선택 스타일 */
+.ticket_choose { 
+	
+   	position: absolute;
+   	margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 전체 footer를 수평으로 가운데 정렬 */
+    background-color: #ff66b2;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* footer 너비를 100%로 설정 */
+    box-sizing: border-box; /* padding이 포함되도록 설정 */
+}
+
+.ticket_choose img {
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+    margin-right: 20px; /* 이미지와 텍스트 간의 간격을 좁힘 */
+}
+
+.ticket_choose .info-container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-right: 20px; /* 정보 텍스트와 버튼 간의 간격을 조절 */
+}
+
+.ticket_choose .info {
+    font-size: 1.2rem; /* 정보 텍스트 크기 줄임 */
+    margin-bottom: 10px; /* 각 항목 간 간격 줄임 */
+}
+
+.ticket_choose .actions {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem; /* 텍스트 크기 조절 */
+    justify-content: center; /* 버튼들을 중앙 정렬 */
+    gap: 100px; /* 결제와 좌석선택 버튼 사이의 간격을 150px로 설정 */
+    margin-right: 20px; /* actions와 버튼 간의 간격을 넓히기 위해 오른쪽 여백 추가 */
+}
+
+.ticket_choose button {
+    background-color: #ff80c3;
+    color: white;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 50px; /* 버튼과 텍스트 간의 간격을 50px로 설정 */
+}
+
+.ticket_choose button:hover {
+    background-color: #ff66b2;
+}
+
+

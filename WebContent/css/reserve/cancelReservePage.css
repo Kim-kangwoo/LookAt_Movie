@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+/* 기본 스타일 */
+	* {
+	    margin: 0;
+	    padding: 0;
+	    box-sizing: border-box;
+	}
+	
+	body {
+	    font-family: 'Arial', sans-serif;
+	    background-color: #000000;
+	    color: #333;
+	}
+	
+	
+	
+	/* 배너 */
+	.banner {
+	    background-color: #ff66b2;
+	    color: white;
+	    text-align: center;
+	    padding: 50px 20px;
+	}
+	
+	.banner h1 {
+	    font-size: 2.5rem;
+	}
+	
+	/* 무비 차트 및 좌석 샘플 */
+	.movieChart, .seatType {
+	    background-color: #fff;
+	    padding: 40px 20px;
+	    text-align: center;
+	}
+	
+	.movieChart h1, .seatType h1 {
+	    font-size: 2rem;
+	    color: #333;
+	}
+	
+	hr {
+	    margin: 20px 0;
+	}
+	
+
+
+ /* 예매 취소 내용 */
+    .cancel-content {
+        width: 80%;
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .cancel-content h1 {
+        font-size: 2rem;
+        color: #ff66b2;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .cancel-content .reserve-info {
+        margin-bottom: 15px;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .cancel-content .reserve-info span {
+        display: block;
+        font-size: 16px;
+        margin: 5px 0;
+        color: #555;
+    }
+
+    .cancel-content .reserve-info label {
+        font-weight: bold;
+        color: #ff66b2;
+    }
+
+    .cancel-content button {
+        padding: 12px 30px;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .cancel-content button:hover {
+        background-color: #e53935;
+    }
+
+    /* 총 취소 금액 */
+    .total-price {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 1.2rem;
+        color: #333;
+    }
+
+   
+

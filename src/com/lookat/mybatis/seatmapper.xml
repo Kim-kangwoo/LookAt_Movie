@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="seat">
+
+  	<!-- 남은좌석 추출 -->
+  	<select id="leftSeat" parameterType="int" resultType="SeatVO">
+   		
+   		SELECT *
+		FROM SEAT
+		WHERE SEAT_ID NOT IN (SELECT SEAT_ID
+                  FROM RESERVE WHERE RUNTIME_ID = #{runtimeId})
+		ORDER BY SEAT_ID                  
+   		
+   </select>
+  	
+  	<!-- 전체 좌석 추출 -->
+   <select id="seatList" resultType="SeatVO">
+   		
+   		SELECT * FROM SEAT
+   		
+   </select>
+   
+   <!-- 좌석테이블 가격 추출 -->
+   <select id="getTotalPrice" parameterType="string" resultType="int">
+   	
+   	SELECT SUM(SEAT_PRICE)
+	FROM SEAT
+	WHERE SEAT_ID IN 
+	<foreach collection="array" index="index" item="seatId" open="(" close=")" separator=",">
+	#{seatId}
+	</foreach>
+   	
+   </select>
+   
+   <!-- 결제일과 멤버ID를 이용해 해당 결제일 총 결제 금액 추출 -->
+   <select id="getTotalPriceByPayDate" parameterType="HashMap" resultType="int">
+   		
+   		SELECT SUM(SEAT_PRICE)
+		FROM SEAT
+		WHERE SEAT_ID IN (SELECT SEAT_ID
+        		          FROM RESERVE
+                		  WHERE PAY_DATE = #{payDate}
+                  		  AND MEMBER_ID = #{memberId})
+   
+   </select>
+   
+   <select id="getSeatTotalCount" resultType="int">
+   
+   		SELECT COUNT(*) FROM SEAT
+   
+   </select>
+   
+   <select id="getSeatA1to6" resultType="SeatVO">
+   	
+   	<![CDATA[
+   	
+		SELECT *
+		FROM   (SELECT *
+		        FROM SEAT
+		        WHERE SEAT_ID LIKE ('A%')
+		        ORDER BY LENGTH(SEAT_ID), SEAT_ID)
+		WHERE ROWNUM <= 6   	
+   	
+   	]]>
+   
+   </select>
+   
+   <select id="getSeatA7to12" resultType="SeatVO">
+   	
+   	<![CDATA[
+   	
+		SELECT SEAT_ID, SEAT_PRICE, SEAT_TYPE
+		FROM
+		(
+		    SELECT SEAT_ID, SEAT_PRICE, SEAT_TYPE
+		    FROM
+		        (
+		         SELECT ROWNUM AS SEQ, SEAT_ID, SEAT_PRICE, SEAT_TYPE
+		         FROM   
+		         (      
+		                SELECT *
+		                FROM SEAT
+		                WHERE SEAT_ID LIKE ('A%')
+		                ORDER BY LENGTH(SEAT_ID), SEAT_ID
+		         )
+		        )        
+		    WHERE SEQ >= 7
+		)
+		WHERE ROWNUM <= 6   	
+   	
+   	]]>
+   
+   </select>
+   
+   <select id="getSeatA13to18" resultType="SeatVO">
+   	
+   	<![CDATA[
+   		SELECT SEAT_ID, SEAT_PRICE, SEAT_TYPE
+		FROM
+		(
+		    SELECT SEAT_ID, SEAT_PRICE, SEAT_TYPE
+		    FROM
+		        (
+		         SELECT ROWNUM AS SEQ, SEAT_ID, SEAT_PRICE, SEAT_TYPE
+		         FROM   
+		         (      
+		                SELECT *
+		                FROM SEAT
+		                WHERE SEAT_ID LIKE ('A%')
+		                ORDER BY LENGTH(SEAT_ID), SEAT_ID
+		         )
+		        )        
+		    WHERE SEQ >= 13
+		)
+		WHERE ROWNUM <= 6 
+   	]]>
+   	
+   </select>
+   
+   <select id="getSeatA19to24" resultType="SeatVO">
+   	
+   	<![CDATA[
+   		SELECT SEAT_ID, SEAT_PRICE, SEAT_TYPE
+		FROM
+		(
+		    SELECT SEAT_ID, SEAT_PRICE, SEAT_TYPE
+		    FROM
+		        (
+		         SELECT ROWNUM AS SEQ, SEAT_ID, SEAT_PRICE, SEAT_TYPE
+		         FROM   
+		         (      
+		                SELECT *
+		                FROM SEAT
+		                WHERE SEAT_ID LIKE ('A%')
+		                ORDER BY LENGTH(SEAT_ID), SEAT_ID
+		         )
+		        )        
+		    WHERE SEQ >= 19
+		)
+		WHERE ROWNUM <= 6 
+   	]]>
+   	
+   </select>
+   
+   <!-- B1 ~ B6 까지  -->
+   <select id="getSeatB1to6" resultType="SeatVO">
+   
+   	<![CDATA[
+		SELECT *
+		FROM   (SELECT *
+        		FROM SEAT
+        		WHERE SEAT_ID LIKE ('B%')
+        		ORDER BY LENGTH(SEAT_ID), SEAT_ID)
+		WHERE ROWNUM <= 6
+   ]]>
+   </select>
+   
+   <!-- B7 ~ B12 까지 -->
+   <select id="getSeatB7to12" resultType="SeatVO">
+   		
+   	<![CDATA[	
+		SELECT SEAT_ID, SEAT_PRICE, SEAT_TYPE
+		FROM
+		    (
+		     SELECT ROWNUM AS SEQ, SEAT_ID, SEAT_PRICE, SEAT_TYPE
+		     FROM   
+		     (      
+		            SELECT *
+		            FROM SEAT
+		            WHERE SEAT_ID LIKE ('B%')
+		            ORDER BY LENGTH(SEAT_ID), SEAT_ID
+		     )
+		    )        
+		WHERE SEQ >= 7 
+   	]]>
+   	
+   </select>
+   
+   <select id="getSeatC1to6" resultType="SeatVO">
+   	
+   		SELECT *
+		FROM SEAT
+		WHERE SEAT_ID LIKE ('C%')
+		ORDER BY SEAT_ID
+   	
+   </select>
+</mapper>
+

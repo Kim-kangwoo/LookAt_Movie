@@ -1,0 +1,125 @@
+@charset "UTF-8"; /* 문자 인코딩 설정 */
+@import "reset.css"; /* 브라우저 기본 스타일 초기화 */
+
+@font-face {
+    font-family: 'Cafe24Simplehae-v2.0';
+    src: url('../font/Cafe24Simplehae-v2.0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Cafe24Danjunghae-v2.0';
+    src: url('../font/Cafe24Danjunghae-v2.0.ttf') format('truetype');
+}
+
+* {
+	font-family: 'Cafe24Simplehae-v2.0';
+}
+
+/* 기본 스타일 */
+body {
+    margin-bottom: 30px;
+    background-color: #333;
+    overflow-y: scroll; /* 스크롤이 항상 표시되도록 */
+}
+
+/* 로그인 페이지 제목 스타일 */
+h1 {
+	font-size: 30px;
+    text-align: center;
+    color: #ff66b2; /* 핑크색 */
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+p {
+	text-align: center;
+	color: #ff66b2; /* 핑크색 */
+	margin-bottom: 20px;
+}
+
+/* 컨테이너 스타일 */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; /* 화면 중앙 정렬 */
+    background-color: #222; /* 어두운 배경 */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+
+/* 아이디 찾기, 비밀번호 찾기 버튼 스타일 */
+.button-container {
+    width: 100%;
+    display: flex !important; /* Flexbox로 버튼들을 가로로 정렬 */
+    justify-content: center !important; /* 버튼들을 수평으로 가운데 정렬 */
+    gap: 20px !important; /* 버튼 간 간격 조정 */
+    margin-top: 10px !important;
+    align-items: center;
+}
+
+.button-container button {
+    min-width: 100px; /* 버튼 최소 너비 지정 */
+    padding: 10px 20px !important; /* 버튼 내부 여백 조정 */
+    font-size: 16px !important; /* 글자 크기 조정 */
+    background-color: #ff4f80 !important; /* 핑크색 */
+    color: white !important; /* 글자 색상 */
+    border: none !important; /* 테두리 없음 */
+    border-radius: 5px !important; /* 모서리 둥글게 */
+    cursor: pointer !important; /* 클릭 가능 표시 */
+    transition: background-color 0.3s ease !important; /* 버튼 호버시 색상 부드럽게 변경 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+.button-container button:hover {
+    background-color: #e43c6b !important; /* 어두운 핑크 */
+}
+
+/* 입력 폼 스타일 */
+form {
+    margin-bottom: 20px;
+}
+
+/* 아이디와 비밀번호 입력창을 일렬로 맞추기 */
+form label {
+    display: inline-block;
+    width: 30%;
+    font-size: 14px;
+    color: #fff;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    width: 90%; /* 입력창을 90%로 설정하여 label과 일치하도록 맞추기 */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #333; /* 어두운 입력 필드 배경 */
+    color: #fff;
+    font-size: 14px;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus {
+    border-color: #ff4f80;
+    outline: none;
+}
+
+/* 로그인 버튼 스타일 */
+form input[type="submit"] {
+    width: 95%; /* 로그인 버튼을 95%로 설정하여 입력창과 너비 맞추기 */
+    padding: 10px;
+    border: none;
+    background-color: #ff4f80 !important; /* 핑크색 */
+    color: white !important;
+    font-size: 16px !important;
+    border-radius: 5px !important;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #e43c6b !important; /* 어두운 핑크 */
+}

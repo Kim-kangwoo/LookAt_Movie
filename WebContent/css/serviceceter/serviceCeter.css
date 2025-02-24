@@ -1,0 +1,89 @@
+@charset "UTF-8";
+	  /* 기본 스타일 */
+	@font-face {
+	    font-family: 'Cafe24Simplehae-v2.0';
+	    src: url('../font/Cafe24Simplehae-v2.0.ttf') format('truetype');
+	}
+	
+	@font-face {
+	    font-family: 'Cafe24Danjunghae-v2.0';
+	    src: url('../font/Cafe24Danjunghae-v2.0.ttf') format('truetype');
+	}
+    body {
+      background-color: #000000;
+      color: #ff66b2;
+      font-family: Arial, sans-serif;
+    }
+    h1, h3 {
+      text-align: center;
+      color: #ff66b2;
+    }
+    .navbar {
+      background-color: #222;
+    }
+    .navbar-brand {
+      color: #ff66b2;
+    }
+    .buttons{
+    	margin-top: 50px;
+    	
+    }
+    .btn-toggle {
+      margin: 10px;
+      background-color: #ff66b2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+    }
+    .btn-toggle:hover {
+      background-color: #ff1a6d;
+    }
+    .accordion-button {
+      background-color: #ff4081 !important;
+      color: white;
+      font-weight: bold;
+    }
+    .accordion-button:not(.collapsed) {
+      background-color: #ff66b2 !important;
+      color: white !important;
+    }
+    .accordion-body {
+      background-color: #333;
+      color: white;
+      font-size: 14px;
+    }
+    /* 스타일링: 검색창 */
+    .search-bar {
+      margin-bottom: 30px;
+    }
+    .form-control {
+      background-color: #ff80c3;
+      color: white;
+      border: 1px solid #555;
+    }
+    .form-control:focus {
+      background-color: white;
+      border-color: #ff66b2;
+    }
+    .btn-outline-dark {
+      border-color: #ff66b2;
+      color: #ff66b2;
+    }
+    .btn-outline-dark:hover {
+      background-color: #ff66b2;
+      color: white;
+    }
+     /* 푸터 스타일 */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+      
